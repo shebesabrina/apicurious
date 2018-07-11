@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
     create! do |user|
       user.provider = auth["provider"]
       user.uid = auth["uid"]
-      user.name = auth["info"]["name"]
+      user.token = auth["credentials"]["token"]
+      user.username = auth["extra"]["raw_info"]["login"]
     end
   end
-end 
+end
